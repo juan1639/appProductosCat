@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html th:replace="~{_global :: plantilla(~{::title}, ~{::main})}"
+	xmlns:th="http://www.thymeleaf.org">
+
+<title>Ejemplo</title>
+
+<main class="container min-vh-100">
+	<a class="btn btn-info fw-semibold ms-2 mb-3"
+		href="#" th:href="@{/index}">Ver Todos</a>
+	
+	<ul class="nav nav-tabs mb-4">
+		<li th:each="categoria: ${categorias}"><a class="nav-link"
+			href="#" th:href="@{/categoria/{id}(id=${categoria.id})}"
+			th:text="${categoria.nombre}">Categoría1</a></li>
+	</ul>
+
+	<div
+		class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 row-cols-xxl-6 g-4">
+		<div th:each="producto: ${productos}" th:object="${producto}" class="col">
+			<div class="card h-100 bg-secondary-subtle">
+			
+				<img src="https://picsum.photos/400/300?*{id}" class="card-img-top"
+					alt="card-image">
+					
+				<div class="card-body">
+					<div>
+						<h5 class="card-title" th:text="*{nombre}">Card title</h5>
+						<p class="card-text describir" th:text="*{descripcion}"></p>
+					</div>
+					<!-- <p class="card-text">
+						<a href="#" th:href="@{/carrito/agregar/{id}(id=${producto.id})}" class="btn btn-primary">Añadir al carrito</a>
+					</p> -->
+				</div>
+				
+				<div>
+					<span class="ms-3 me-1 fst-italic">PVP:</span>
+					<span class="card-text" th:text="*{pvp}"></span>
+					<span class="card-text" th:text="€">€</span>
+				</div>
+				
+				<div class="card-footer text-warning">
+					
+				</div>
+			</div>
+		</div>
+	</div>
+
+</main>
