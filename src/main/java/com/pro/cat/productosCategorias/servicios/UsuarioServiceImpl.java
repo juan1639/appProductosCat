@@ -1,6 +1,7 @@
 package com.pro.cat.productosCategorias.servicios;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import com.pro.cat.productosCategorias.persistencia.entidades.Categoria;
@@ -9,6 +10,7 @@ import com.pro.cat.productosCategorias.persistencia.repos.CategoriaRepository;
 import com.pro.cat.productosCategorias.persistencia.repos.ProductoRepository;
 
 @Service
+@Primary
 public class UsuarioServiceImpl implements UsuarioService {
 	
 	@Autowired

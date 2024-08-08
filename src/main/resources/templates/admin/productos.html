@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html th:replace="~{_global :: plantilla(~{::title}, ~{::main})}"
+	xmlns:th="http://www.thymeleaf.org">
+
+<title>Administración</title>
+
+<main class="container min-vh-100">
+
+	<div class="my-4 p-2 border-bottom text-secondary fst-italic">
+		<h1>Productos</h1>
+	</div>
+	
+	<table class="table table-hover table-striped table-bordered">
+		<thead class="table-dark">
+			<tr>
+				<th class="text-center">Id</th>
+				<th class="text-center">Nombre</th>
+				<th class="text-center">Descripción</th>
+				<th class="text-center">PVP</th>
+				<th class="text-center">Categoría</th>
+				
+				<th class="d-grid">
+					<a class="btn btn-primary btn-sm" href="#"
+					th:href="@{/admin/producto}">Alta Nuevo</a>
+				</th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			<tr th:each="pr: ${productos}">
+				<td th:text="${pr.id}" class="text-end">Id</td>
+				<td th:text="${pr.nombre}">Nombre</td>
+				<td th:text="${pr.descripcion}" class="text-end">Valoración</td>
+				<td th:text="${pr.pvp}" class="text-end">PVP</td>
+				<td th:text="${pr.categoria.nombre}">Categoría</td>
+				
+				<td class="d-flex justify-content-around">
+					<a class="btn btn-primary btn-sm" href="#"
+						th:href="@{/admin/producto/{id}(id=${pr.id})}">Editar</a>
+					
+					<a href="#" class="btn btn-danger btn-sm"
+						th:href="@{/admin/producto/borrar/{id}(id=${pr.id})}">Borrar</a>
+				</td>
+			</tr>
+		</tbody>
+		
+		<tfoot class="table-dark">
+			<tr>
+				<th class="text-center">Id</th>
+				<th class="text-center">Nombre</th>
+				<th class="text-center">Descripción</th>
+				<th class="text-center">PVP</th>
+				<th class="text-center">Categoría</th>
+				
+				<th class="d-grid">
+					<a class="btn btn-primary btn-sm" href="#"
+					th:href="@{/admin/producto}">Alta Nuevo</a>
+				</th>
+			</tr>
+		</tfoot>
+	</table>
+</main>
