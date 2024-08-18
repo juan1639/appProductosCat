@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es" th:fragment="plantilla (titulo, contenido)"
-	xmlns:th="http://www.thymeleaf.org">
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 
 <!-- <html lang="es" th:fragment="plantilla (titulo, contenido)"
 	xmlns:th="http://www.thymeleaf.org"
@@ -68,17 +69,17 @@
 					<li class="nav-item px-3">
 <!-- 						<a class="nav-link" href="#" th:href="@{/admin/todos}">Administración</a> -->
 						
-						<div class="btn-group">
+						<div class="btn-group" sec:authorize="hasAuthority('ADMIN')">
 						  <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"
 						  	aria-expanded="false">Administración</button>
 						  	
 						  <ul class="dropdown-menu">
 						    <li>
-						    	<a class="dropdown-item" href="#" th:href="@{/admin/productos}">Tabla Proyectos</a>
+						    	<a class="dropdown-item" href="#" th:href="@{/admin/productos}">Tabla Productos</a>
 						    </li>
 						    
 						    <li>
-						    	<a class="dropdown-item" href="#" th:href="@{/admin/categorias}">Tabla Categorías</a>
+						    	<a class="dropdown-item" href="#" th:href="@{/admin/todosusuarios}">Tabla Usuarios</a>
 						    </li>
 						    
 						    <li><hr class="dropdown-divider"></li>
@@ -90,26 +91,30 @@
 						</div>
 					</li>
 					
-					<li class="nav-item px-3">
+					<!-- <li class="nav-item px-3">
 						<a class="nav-link rounded" href="#" th:href="@{/login}">Iniciar sesión</a>
-					</li>
+					</li> -->
 				</ul>
 				
-				<!-- <ul class="navbar-nav mb-2 mb-lg-0">
-					<li class="nav-item" sec:authorize="hasRole('ADMIN')"><a
-						class="nav-link" href="#" th:href="@{/admin/productos}">Administración</a></li>
-					<li class="nav-item"><a href="#" class="nav-link"
-						data-bs-toggle="offcanvas" data-bs-target="#carrito">Carrito</a></li>
-					<li class="navbar-text" sec:authorize="isAuthenticated()"
+				<ul class="navbar-nav mb-2 mb-lg-0">
+					<!-- <li class="nav-item" sec:authorize="hasAuthority('ADMIN')"><a
+						class="nav-link" href="#" th:href="@{/admin/productos}">Administración</a></li> -->
+						
+					<!-- <li class="nav-item"><a href="#" class="nav-link"
+						data-bs-toggle="offcanvas" data-bs-target="#carrito">Carrito</a></li> -->
+						
+					<li class="navbar-text text-primary me-2" sec:authorize="isAuthenticated()"
 						sec:authentication="name">USUARIO</li>
+						
 					<li class="nav-item" sec:authorize="!isAuthenticated()"><a
-						class="nav-link" href="#" th:href="@{/login}">Iniciar sesión</a></li>
+						class="nav-link rounded" href="#" th:href="@{/login}">Iniciar sesión</a></li>
+						
 					<li class="nav-item" sec:authorize="isAuthenticated()">
 						<form th:action="@{/logout}" method="post">
-							<button class="nav-link">Cerrar sesión</button>
+							<button class="nav-link rounded">Cerrar sesión</button>
 						</form>
 					</li>
-				</ul> -->
+				</ul>
 			</div>
 		</div>
 	</nav>

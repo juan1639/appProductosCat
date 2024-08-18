@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html th:replace="~{_global :: plantilla(~{::title}, ~{::main})}"
+	xmlns:th="http://www.thymeleaf.org">
+
+<title>registro</title>
+
+<main class="container min-vh-100">
+
+	<div th:if="${param.error}" class="alert alert-danger alert-dismissible fade show"
+		role="alert">
+		Se ha producido un Error
+		<button type="button" class="btn-close" data-bs-dismiss="alert"
+			aria-label="Close"></button>
+	</div>
+	
+	<div th:if="${param.logout}" class="alert alert-success alert-dismissible fade show"
+		role="alert">
+		Has cerrado la sesión
+		<button type="button" class="btn-close" data-bs-dismiss="alert"
+			aria-label="Close"></button>
+	</div>
+	
+	<div class="d-flex justify-content-between border-bottom p-1 my-5 mx-2">
+		<div class="d-inline-flex px-1 fst-italic text-secondary">
+			<h2>Registro Nuevo Usuario</h2>
+		</div>
+	</div>
+	
+	<form action="#" th:action="@{/registro}" method="post">
+	
+		<div class="row mb-3">
+			<label class="col-sm-2 col-form-label" for="username">Usuario</label>
+			
+			<div class="col">
+				<input class="form-control" type="text" name="username" />
+			</div>
+		</div>
+		
+		<div class="row mb-4">
+			<label class="col-sm-2 col-form-label" for="password">Contraseña</label>
+			
+			<div class="col">
+				<input class="form-control" type="password" name="password" />
+			</div>
+		</div>
+
+		<div class="row mb-5">
+			<div class="offset-sm-2 col">
+				<button class="btn btn-primary px-5">Enviar</button>
+			</div>
+		</div>
+	</form>
+
+</main>

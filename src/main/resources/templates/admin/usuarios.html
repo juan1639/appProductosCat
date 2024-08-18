@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html th:replace="~{_global :: plantilla(~{::title}, ~{::main})}"
+	xmlns:th="http://www.thymeleaf.org">
+	
+<title>Administración</title>
+
+<main>
+	<div class="d-flex justify-content-between border-bottom p-1 my-4 mx-2">
+		<div class="d-inline-flex px-1 fst-italic text-secondary">
+			<h1>Usuarios Registrados</h1>
+		</div>
+		
+		<div class="d-inline-flex p-2">
+			<a class="btn btn-primary px-4" href="#" th:href="@{/registro}">Alta Nuevo</a>
+		</div>
+	</div>
+	
+	<table class="table table-hover table-striped table-bordered">
+		<thead class="table-dark">
+			<tr>
+				<th class="text-center">Id</th>
+				<th class="text-center">Username</th>
+				<th class="text-center">Permisos</th>
+				<th class="text-center">Password (encriptada)</th>
+				<th class="text-center text-primary">OPCIONES</th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			<tr th:each="user: ${usuarios}">
+				<td th:text="${user.id}" class="text-end">Id</td>
+				<td th:text="${user.username}">Username</td>
+				<td th:text="${user.role}" class="textoSmall">Permisos</td>
+				<th th:text="${user.password}">(encriptada)</th>
+				
+				<td class="d-flex justify-content-around">
+					<a class="btn btn-primary btn-sm" href="#"
+						th:href="@{/admin/usuario/{id}(id=${user.id})}">Editar</a>
+					
+					<a href="#" class="btn btn-danger btn-sm"
+						th:href="@{/admin/usuario/borrar/{id}(id=${user.id})}">Borrar</a>
+				</td>
+			</tr>
+		</tbody>
+		
+		<tfoot class="table-dark">
+			<tr>
+				<th class="text-center">Id</th>
+				<th class="text-center">Username</th>
+				<th class="text-center">Permisos</th>
+				<th class="text-center">Password (encriptada)</th>
+				
+				<th class="d-flex justify-content-around">
+					<a class="btn btn-primary" href="#" th:href="@{/registro}">Alta Nuevo</a>
+				</th>
+			</tr>
+		</tfoot>
+	</table>
+</main>
